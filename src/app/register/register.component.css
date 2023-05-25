@@ -1,0 +1,30 @@
+input{
+    padding: 5px 50px 5px 05px;
+}
+.form-container{
+    margin-top: 80px;
+    margin-left: 370px;
+    width: 500px;
+    padding:10px;
+    background-color: rgb(158, 157, 174);
+}
+button{
+    border:none;
+    background-color: green;
+    text-align:center;
+    padding:9px 20px;
+    text-decoration: none;
+    font-size: 12px;
+    margin-top: 50px;
+    color:white;
+}
+form{
+   margin-left:100px;
+}
+label{
+    font-size: 20px;
+}
+p{
+    font-size: large;
+    padding-bottom: 20px;
+}

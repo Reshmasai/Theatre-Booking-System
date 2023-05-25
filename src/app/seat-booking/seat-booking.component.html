@@ -1,0 +1,25 @@
+
+<div class="container">
+    <p><b>BOOK YOUR SEATS</b></p>
+    <div class="screen"></div>
+    <div class="row">
+        <div class="seat" id="1" (click)="fn($event)" ></div>
+        <div class="seat" id="2" (click)="fn($event)"></div>
+        <div class="seat" id="3" (click)="fn($event)"></div>
+        <div class="seat" id="4" (click)="fn($event)"></div>
+        <div class="seat" id="5" (click)="fn($event)"></div>
+        <div class="seat" id="6" (click)="fn($event)"></div>
+        <div class="seat" id="7" (click)="fn($event)"></div>
+        <div class="seat" id="8" (click)="fn($event)"></div>
+        <div class="seat" id="9" (click)="fn($event)"></div>
+        <div class="seat" id="10"(click)="fn($event)"></div>
+    </div>
+
+    <p class="text">
+        <b>you have selected {{count}} seat(s) for a price of Rs. {{amount}}</b>
+    </p>
+
+    <button (click)="bookSeats()">Book seats</button>
+</div>
+
+
