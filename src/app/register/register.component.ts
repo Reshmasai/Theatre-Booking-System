@@ -12,8 +12,8 @@ export class RegisterComponent {
   constructor(private http:HttpClient, private router:Router){}
   RegistrationForm = new FormGroup({
     email:new FormControl(),
-    password:new FormControl(),
-    username:new FormControl()
+    mobile:new FormControl(),
+    password:new FormControl()
   })
 
   onRegister(register:FormGroup){
@@ -22,7 +22,7 @@ export class RegisterComponent {
       this.http.post<any>("http://localhost:3000/login", register.value).subscribe(x=>{
       alert("data added");
       register.reset();
-      this.router.navigateByUrl('/')
+      this.router.navigateByUrl('/login')
     })
     }
   }

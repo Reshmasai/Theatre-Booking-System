@@ -1,25 +1,127 @@
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color:#1f2533">
+    <i (click)="routeBack()" class="bi bi-chevron-left icon" style="color: white;"></i>
+    <div class="have-details">
+        <div class="movie-dets ">
+            <a class="movie-name" >{{title}}</a>
+            <span class="mve-certificate">{{certificate}}</span>
+        </div>
+        <div class="theatre-details">
+            <p>{{theatre}} | {{day}}, {{date}} {{month}}, {{time}}</p>
+        </div>
+    </div>
+    <div class="right-item">
+        <p class="ticket">{{count}} Tickets</p><i class="bi bi-pencil pencil-icon"></i>
+    </div>
+    <span (click)="routeBack()" class="cancel"><i class="bi bi-x"></i></span>
+</nav>
+<div class="navbar navbar-expand-sm navbar-dark time-bar" style="background-color: rgb(249, 247, 255);position:sticky;top:76px;z-index:1">
+    <div (click) = selectTime($event) class="time-items" *ngFor="let item of timeList">
+        {{item}}
+    </div>
+</div>
 
-<div class="container">
-    <p><b>BOOK YOUR SEATS</b></p>
-    <div class="screen"></div>
-    <div class="row">
-        <div class="seat" id="1" (click)="fn($event)" ></div>
-        <div class="seat" id="2" (click)="fn($event)"></div>
-        <div class="seat" id="3" (click)="fn($event)"></div>
-        <div class="seat" id="4" (click)="fn($event)"></div>
-        <div class="seat" id="5" (click)="fn($event)"></div>
-        <div class="seat" id="6" (click)="fn($event)"></div>
-        <div class="seat" id="7" (click)="fn($event)"></div>
-        <div class="seat" id="8" (click)="fn($event)"></div>
-        <div class="seat" id="9" (click)="fn($event)"></div>
-        <div class="seat" id="10"(click)="fn($event)"></div>
+<div class="layout-container">
+
+    <!-- VIP Section -->
+    <div class="type">
+        <p class="type-price">VIP-Rs. {{movieRates.VIP}}.00</p>
+        <hr>
+    </div>
+    <div class="first-section">
+        <div class="colm alpha">J</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="seat" id="301" (click)="fn($event, 'VIP')">10</div>
+        <div class="seat" id="302" (click)="fn($event, 'VIP')">9</div>
+        <div class="colm">&nbsp;</div>
+        <div class="seat" id="303" (click)="fn($event, 'VIP')">8</div>
+        <div class="seat" id="304" (click)="fn($event, 'VIP')">7</div>
+        <div class="colm">&nbsp;</div>
+        <div class="seat" id="305" (click)="fn($event, 'VIP')">6</div>
+        <div class="seat" id="306" (click)="fn($event, 'VIP')">5</div>
+        <div class="colm">&nbsp;</div>
+        <div class="seat" id="307" (click)="fn($event, 'VIP')">4</div>
+        <div class="seat" id="308" (click)="fn($event, 'VIP')">3</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="seat" id="309" (click)="fn($event, 'VIP')">2</div>
+        <div class="seat" id="310" (click)="fn($event, 'VIP')">1</div>
+    </div>
+    
+    
+    <!-- PREMIUM Section -->
+    <div class="type">
+        <p class="type-price">PREMIUM-Rs. {{movieRates.premium}}.00</p>
+        <hr>
+    </div>
+    
+    <div class="second-section" *ngFor="let item of 'x'.repeat(5).split(''); index as i">
+        <div  *ngIf="i===0" class="colm alpha">I</div>
+        <div  *ngIf="i===1" class="colm alpha">H</div>
+        <div  *ngIf="i===2" class="colm alpha">G</div>
+        <div  *ngIf="i===3" class="colm alpha">F</div>
+        <div  *ngIf="i===4" class="colm alpha">E</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div *ngFor="let item of 'x'.repeat(16).split(''); index as j;"
+         class="seat sec-sec" id="{{i}}{{j}}" (click)="fn($event, 'premium')">{{16-j}}</div>
+       
     </div>
 
-    <p class="text">
-        <b>you have selected {{count}} seat(s) for a price of Rs. {{amount}}</b>
-    </p>
 
-    <button (click)="bookSeats()">Book seats</button>
+
+    <!-- EXECUTIVE Section -->
+    <div class="type">
+        <p class="type-price">EXECUTIVE-Rs. {{movieRates.executive}}.00</p>
+        <hr>
+    </div>
+
+    <div class="third-section" *ngFor="let item of 'x'.repeat(2).split(''); index as i">
+        <div  *ngIf="i===0" class="colm alpha">D</div>
+        <div  *ngIf="i===1" class="colm alpha">C</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div *ngFor="let item of 'x'.repeat(12).split(''); index as j;" 
+        class="seat" id="1{{i}}{{j}}" (click)="fn($event, 'executive')">{{12-j}}</div>
+    </div>
+
+
+
+    <!-- NORMAL Section -->
+    <div class="type">
+        <p class="type-price">NORMAL-Rs. {{movieRates.normal}}.00</p>
+        <hr>
+    </div>
+
+    <div class="fourth-section" *ngFor="let item of 'x'.repeat(2).split(''); index as i">
+        <div  *ngIf="i===0" class="colm alpha">B</div>
+        <div  *ngIf="i===1" class="colm alpha">A</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div *ngFor="let item of 'x'.repeat(12).split(''); index as j;" 
+        class="seat" id="2{{i}}{{j}}" (click)="fn($event, 'normal')">{{12-j}}</div> 
+    </div><br>
+
+    <div class="screen"></div><br>
+    <p class="screen-text">All eyes this way please!</p>
+    
 </div>
+<footer *ngIf="!isBook" class="footer-1">
+    <div class="footer-items">
+        <div class="box1"></div><p class="short-txt">Available</p>
+        <div class="box2"></div><p class="short-txt">Selected</p>
+        <div class="box3"></div><p class="short-txt">Sold</p>
+    </div>
+</footer>
+<footer *ngIf="isBook" class="footer-2">
+    <div class="pay-btn"><button (click)="bookSeats()">Pay Rs.{{sumVip+sumPremium+sumExecutive+sumNormal}}</button></div>
+</footer>
 
 

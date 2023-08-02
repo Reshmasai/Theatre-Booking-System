@@ -1,0 +1,11 @@
+
+<div class="search-bar">
+    <i (click)="routeBack()" class="bi bi-chevron-left icon"></i>
+    <input routerLink="/search" class="p-2" type="text" placeholder=" search for movies" name="searchInput" [(ngModel)]="searchInput">
+    <span (click)="routeBack()" class="cancel"><i class="bi bi-x"></i></span>
+</div>
+<div class="search-results col-lg-4 offset-lg-3" >
+    <ul class="search-items" *ngFor="let item of movieList | movieSearch: searchInput">
+        <li (click)="searchResult($event)" class="inner-element">{{item}}</li>
+    </ul>
+</div>

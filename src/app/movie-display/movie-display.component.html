@@ -1,0 +1,15 @@
+<div>
+    <h1 class="header"><b>Recommended movies</b></h1>
+    <div class="btn-container">
+        <button *ngIf="isLeft" class="pull-left arrow-btn left-btn" (click)="scrollLeft()"><i class="bi bi-chevron-left" style="color: white;"></i></button>
+        <button *ngIf="isRight" class="pull-right arrow-btn right-btn" (click)="scrollRight()"><i class="bi bi-chevron-right" style="color: white;"></i></button>
+    </div>
+    <div #scroll class="set-image">
+        <div><img class="img" src="assets/Images/Avatar.jpg" width="200" height="350" ><p class="first-p"><b>Avatar: way of water</b></p><p class="second-p">Action/Animation/suspense</p></div>
+        <div><img class="img" src="assets/Images/RRR.jpg" width="200" height="350"><p class="first-p"><b>RRR</b></p><p>Action/Adventure/patriotic</p></div>
+        <div><img class="img" src="assets/Images/D&D.jpg" width="200" height="350"><p class="first-p"><b>Dungeons and dragons: honour among the thieves</b></p><p class="second-p">Action/suspense</p></div>
+        <div><img class="img" src="assets/Images/Johnwick.jpg" width="200" height="350" ><p class="first-p"><b>Johnwick:chapter 4</b></p><p class="second-p">Action/Adventure/Marvel</p></div>
+        <div><img class="img" src="assets/Images/Spiderman.jpg" width="200" height="350" ><p class="first-p"><b>Spider-Man: No way home</b></p><p class="second-p">Action/suspense/Marvel</p></div>
+        <div><img class="img" src="assets/Images/Evil.jpg" width="200" height="350" ><p class="first-p"><b>Evil dead rise</b></p><p class="second-p">Horror/thriller</p></div>
+    </div>
+</div>

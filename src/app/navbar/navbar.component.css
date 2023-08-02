@@ -1,0 +1,29 @@
+.login-btn {
+    font-family: Calibri;
+    color:white;
+    background-color: rgb(255, 60, 106);
+    border:none;
+    border-radius: 5px;
+    padding: 4px 15px;
+    font-size: 17px;
+}
+.login-btn:active{
+    box-shadow: 0 5px rgb(77, 34, 34);
+    transform: translateY(1px);
+}
+input {
+    font-family: FontAwesome;
+    width: 600px;
+}
+select {
+    background-color: #333;
+    border:none;
+    padding:0 5px 0 0;  
+    font-size: 17px;
+}
+
+/* .img-container {
+    float: left;
+    padding: 10px;
+} */
+

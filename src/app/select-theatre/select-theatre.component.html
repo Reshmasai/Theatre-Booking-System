@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background: #1f253a; position:relative;">
+    <div class="contain-details">
+        <a class="mve-title" (click)="goBack()">{{title}} - {{language}}</a>
+        <div class="cert-genre">
+            <p class="mve-cert">{{certificate}}</p>
+            <p *ngFor="let item of seperateGenre" class="mve-genre">{{ item.toUpperCase() }}</p>
+        </div>
+    </div>
+</nav>
+<div class="btn-container">
+    <button class="pull-left arrow-btn left-btn" (click)="scrollLeft()"><i class="bi bi-chevron-left" ></i></button>
+    <button class="pull-right arrow-btn right-btn" (click)="scrollRight()"><i class="bi bi-chevron-right" ></i></button>
+</div>
+<div class="filter-section">
+    <div #scroll class="sticky-top calender">
+        <div class="date-holder" (click)="fn($event,i)" *ngFor="let item of futureDay; index as i">
+            <div class="day">{{futureDay[i].toUpperCase()}}</div>
+            <div class="date">{{futureDate[i]}}</div>
+            <div class="month">{{futureMonth[i].toUpperCase()}}</div>    
+        </div>
+    </div>
+
+    <div class="time-filter" (click)="openTiming()">Filter show timing <span class="down-arrow"><i class="bi bi-chevron-down"></i></span></div>
+    <div class="price-filter" (click)="openPricing()">Filter price range <span class="down-arrow-1"><i class="bi bi-chevron-down"></i></span></div>
+    <div class="lang-filter" (click)="openLanguage()">{{language}} - {{format}} <span class="down-arrow"><i class="bi bi-chevron-down"></i></span></div>
+       
+</div>
+
+<div class="timings" (mouseleave)="openTiming()">
+    <div class="pricing-section"><input type="checkbox" name="" id="6"> <p>Morning</p></div>
+    <div class="pricing-section"><input type="checkbox" name="" id="7"> <p>Afternoon</p></div>
+    <div class="pricing-section"><input type="checkbox" name="" id="8"> <p>Evening</p></div>
+    <div class="pricing-section"><input type="checkbox" name="" id="9"> <p>Night</p></div>
+</div>
+
+<div class="pricings" (mouseleave)="openPricing()">
+    <div class="timing-section"><input type="checkbox" name="" id="1"> <p>0 - 100</p></div>
+    <div class="timing-section"><input type="checkbox" name="" id="2"> <p>101 - 200</p></div>
+    <div class="timing-section"><input type="checkbox" name="" id="3"> <p>201 - 300</p></div>
+    <div class="timing-section"><input type="checkbox" name="" id="4"> <p>301 - 400</p></div>
+    <div class="timing-section"><input type="checkbox" name="" id="5"> <p>401 - 500</p></div>
+</div>
+
+<p *ngIf="index==-1" class="shows"> Sorry, no shows available</p>
+<div *ngIf="index!=-1" class="theatre-list">
+    <div class="theatres" *ngFor="let item of theatre; index as i">
+        <div class="theatre-name">{{item}}</div>
+        <div class="second-row">
+            <p class="ticket"> <i class="bi bi-phone"></i> M-Ticket</p>
+            <p class="food"> <fa-icon [icon]="burger"></fa-icon>
+                <fa-icon [icon]="beverage"></fa-icon> Food and Beverage </p>
+                <div class="alignTime">
+                    <div (click)="navigateToBooking(time, timings[i],item)" *ngFor="let time of timings[i]" class="time">
+                        {{time}}
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+

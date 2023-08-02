@@ -1,17 +1,16 @@
 <div class="form-container">
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
-  <p><b>LOGIN SCREEN</b></p><br>
+<form class="form-class" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+  <p class="heading">Login screen</p>
+  <p class="bottom-line">Stay updated with upcoming movies</p><br>
   <table>
     <tr>
-      <td><label for="email">Email</label></td>
-      <td><input type="text" id="email" name="email" formControlName="email"></td>
+      <td><input type="text" id="email" name="email" placeholder="Email address" formControlName="email"></td>
     </tr><br>
     <tr>
-      <td><label for="password">Password</label></td>
-      <td><input type="text" id="password" name="password" formControlName="password"></td>
+      <td><input type="text" id="password" name="password" placeholder="Password" formControlName="password"></td>
     </tr>
   </table>
   <button type="submit">Login</button>
-  <span><a routerLink="/register">New user?</a></span>
   </form>
 </div>
+<span>New to ReelReserve? </span><a routerLink="/register">sign in</a>

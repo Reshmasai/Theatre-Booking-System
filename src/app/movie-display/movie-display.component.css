@@ -1,0 +1,43 @@
+.header{
+    font-size: 25px;
+    margin-left:40px;
+    margin-top:40px;
+}
+.img {
+    border-radius: 10px;
+}
+.set-image {
+    display:grid;
+    grid-auto-flow: column;
+    grid-gap: 25px;
+    padding:5px 20px 15px 40px; 
+    overflow-x:hidden;
+    scroll-behavior: smooth;
+}
+.first-p,.second-p {
+    margin-bottom: 0;
+}
+.first-p {
+   margin-top: 10px;
+}
+.btn-container{
+    position:relative;
+    z-index:1;
+}
+.arrow-btn {
+    border-radius: 50%; 
+    border:none;
+    background-color: rgb(173, 172, 172);
+    width: 40px;
+    height: 40px;
+}
+.right-btn {
+    margin-top: 160px;
+    margin-right:20px;
+    margin-left:-20px
+}
+.left-btn {
+    margin-top: 160px;
+    margin-left:20px;
+    margin-right: -20px;
+}

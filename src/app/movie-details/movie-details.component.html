@@ -1,0 +1,47 @@
+<div class="holder">
+    <img  alt="" width="280" height="420">
+    <div>
+        <h1 class="details-title">{{title}}</h1>
+        <div class="star-rating"><span class="icon-star"><i class="bi bi-star-fill"></i></span><p class="rating">{{rating}}/10</p></div>
+        <div class="visual"><span class="video">2D 3D</span><span class="audio">Telugu, Hindi, Malayalam, Tamil, Kannada, English</span></div>
+        <div class="bottom-line"><p>{{time}} <i class="bi bi-dot"></i> {{genre}} <i class="bi bi-dot"></i>  {{certificate}} <i class="bi bi-dot"></i> {{date}} </p></div>
+        <button class="book-btn" (click)="routeOrpopupFn()"> Book tickets</button>
+    </div>
+</div>
+
+<div class="overlay">
+    <div class="popup">
+        <span (click)="closePopup()" class="icon"><i class="bi bi-x"></i></span>
+        <p class="title">{{title}}</p>
+        <h5 class="tag">Select language and format</h5>
+        <div class="language"><p>HINDI</p></div>
+        <span class="format" [routerLink]="['/theatre', name, 'Hindi','2D']">2D</span><span class="format" [routerLink]="['/theatre', name,'Hindi','3D']">3D</span>
+        <div class="language"><p>TELUGU</p></div>
+        <span class="format"  [routerLink]="['/theatre', name, 'Telugu', '2D']">2D</span><span class="format" [routerLink]="['/theatre', name,'Telugu', '3D']">3D</span>
+        <div class="language"><p>KANNADA</p></div>
+        <span class="format"  [routerLink]="['/theatre', name, 'Kannada', '2D']">2D</span><span class="format" [routerLink]="['/theatre', name, 'Kannada', '3D']">3D</span>
+    </div>
+</div>
+<ul class="popup">
+    <li class="sc-vhz3gb-0 fySqsk">
+        <section class="sc-vhz3gb-1 hdcwyz">
+            <span>Telugu</span>
+        </section>
+        <section class="sc-vhz3gb-2 ceXPQZ">
+            <div class="sc-vhz3gb-3 dRokFO">
+                <span>2D</span>
+            </div>
+        </section>
+    </li>
+            
+    <li class="sc-vhz3gb-0 fySqsk">
+        <section class="sc-vhz3gb-1 hdcwyz">
+            <span>Kannada</span>
+        </section>
+        <section class="sc-vhz3gb-2 ceXPQZ">
+            <div class="sc-vhz3gb-3 dRokFO">
+                <span>2D</span>
+            </div>
+        </section>
+    </li>
+</ul>
