@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {HttpClient} from '@angular/common/http'
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  constructor(private http:HttpClient, private router:Router){}
+  name:any;
+  constructor(private http:HttpClient, private router:Router, private dataService:DataService){}
   ngOnInit(): void {
     
   }
@@ -21,11 +23,13 @@ export class LoginComponent implements OnInit{
    onSubmit(login:FormGroup){
     this.http.get<any>("http://localhost:3000/login").subscribe(x=>{
       const value = x.find((y:any)=>{
+        this.name= y.name
         return y.email == login.value.email && y.password == login.value.password
       })
       if (value){
-        alert('login success')
-        this.router.navigateByUrl('/book')
+        this.dataService.isLoggedIn.next(true);
+        this.dataService.name.next(this.name);
+        this.router.navigateByUrl('');
       }
       else{
         alert('No match')

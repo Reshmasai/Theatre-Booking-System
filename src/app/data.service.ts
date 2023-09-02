@@ -9,5 +9,7 @@ export class DataService {
  prevLoc:any;
  isBook=new BehaviorSubject(false);
  isSearch=new BehaviorSubject(false);
+ isLoggedIn=new BehaviorSubject(false);
+ name = new BehaviorSubject("");
   constructor() { }
 }

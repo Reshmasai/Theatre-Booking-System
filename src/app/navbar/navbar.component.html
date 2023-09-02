@@ -12,5 +12,6 @@
         <option value="" (click)="sendLoc('Mumbai')">Mumbai</option>   
         <option value="" (click)="sendLoc('Chennai')">Chennai</option>
     </select>
-    <button class="navbar-brand login-btn" routerLink="/login">Login</button>
+    <button *ngIf="!isLoggedIn" class="navbar-brand login-btn" routerLink="/login">Login</button>
+    <div *ngIf="isLoggedIn" class="profile"><span class="profile-icon"><i class="bi bi-person-circle"></i></span><p class="name-text">Hi, {{name}}</p></div>
 </nav>

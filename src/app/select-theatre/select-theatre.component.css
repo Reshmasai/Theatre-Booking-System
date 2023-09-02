@@ -151,15 +151,27 @@ a:hover {
    font-size:25px;
    color:rgb(197, 194, 194)
 }
+.no-shows{
+    margin-top:100px;
+    padding-bottom:150px;
+}
 .time-filter,.price-filter,.lang-filter{
     float: right;
     margin-top: -45px;
-    border-bottom: 3px solid red;
     padding:0px 20px 20px 20px;
     border-left: 0.3px solid rgb(207, 201, 201);
     border-right:  0.3px solid rgb(207, 201, 201);
 }
-.down-arrow, .down-arrow-1{
+.lang-filter {
+    width:185px;
+}
+.filter-not-applied{
+    border-bottom: 3px solid rgb(217, 217, 217);
+}
+.filter-applied {
+    border-bottom: 3px solid red;
+}
+.down-arrow, .down-arrow-1, .down-arrow-2{
     margin-left:20px;
     border:solid-black;
     border-width:0 3px 3px 0;
@@ -169,7 +181,7 @@ a:hover {
 .rotate-arrow {
     transform: rotate(180deg);
 }
-.pricings,.timings {
+.pricings,.timings,.language {
     display:none;
     box-shadow:rgba(142, 142, 142, 0.2) 0px 2px 5px;
     border: 0.5px solid rgb(224, 224, 224);
@@ -179,20 +191,37 @@ a:hover {
 .pricings{
     padding:10px 0px 10px 25px;
     float:right;
-    width:200px;
-    margin-right:-363px
+    width:207px;
+    left:858px;
+    top:220px;
+    position:absolute;
    
 }
 .timings{
     padding:10px 85px 10px 25px;
     float:right;
-    margin-right:-575px;
+    left:1067px;
+    top:220px;
+    position:absolute;
+}
+.language {
+    float:right;
+    left:675px;
+    top:220px;
+    position:absolute;
+}
+.language-section {
+    padding:5px 48px 5px 48px;
+    border-bottom:1px solid rgb(224, 224, 224);
+}
+.language-section:hover {
+    background-color: rgb(243, 243, 243);
 }
 
 .display {
     display:inline;
 }
-.timing-section, .pricing-section {
+.timing-section, .pricing-section,.language-section {
     display:flex;
     gap:10px;
 }

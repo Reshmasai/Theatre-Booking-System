@@ -20,9 +20,9 @@
         </div>
     </div>
 
-    <div class="time-filter" (click)="openTiming()">Filter show timing <span class="down-arrow"><i class="bi bi-chevron-down"></i></span></div>
-    <div class="price-filter" (click)="openPricing()">Filter price range <span class="down-arrow-1"><i class="bi bi-chevron-down"></i></span></div>
-    <div class="lang-filter" (click)="openLanguage()">{{language}} - {{format}} <span class="down-arrow"><i class="bi bi-chevron-down"></i></span></div>
+    <div [ngClass]="isTimeFiltered?'time-filter filter-applied':'time-filter filter-not-applied'" (click)="openTiming()" (mouseleave)="closeLanguage()">Filter show timing <span class="down-arrow"><i class="bi bi-chevron-down"></i></span></div>
+    <div [ngClass]="isPriceFiltered?'price-filter filter-applied':'price-filter filter-not-applied'" (click)="openPricing()" (mouseleave)="closeLanguage()">Filter price range <span class="down-arrow-1"><i class="bi bi-chevron-down"></i></span></div>
+    <div [ngClass]="isLangFiltered?'lang-filter filter-applied':'lang-filter filter-not-applied'" (click)="openLanguage()" (mouseleave)="closeLanguage()">{{language}} - {{format}} <span class="down-arrow-2"><i class="bi bi-chevron-down"></i></span></div>
        
 </div>
 
@@ -40,22 +40,52 @@
     <div class="timing-section"><input type="checkbox" name="" id="4"> <p>301 - 400</p></div>
     <div class="timing-section"><input type="checkbox" name="" id="5"> <p>401 - 500</p></div>
 </div>
+<div class="language" (mouseleave)="openLanguage()">
+    <div class="language-section" name="lang"><p>Telugu 2D</p></div>
+    <div class="language-section" name="lang"><p>Hindi 2D</p></div>
+    <div class="language-section" name="lang"><p>Kannada 2D</p></div>
+    <div class="language-section" name="lang"><p>Telugu 3D</p></div>
+    <div class="language-section" name="lang"><p>Hindi 3D</p></div>
+    <div class="language-section" name="lang"><p>Kannada 3D</p></div>
+</div>
 
 <p *ngIf="index==-1" class="shows"> Sorry, no shows available</p>
 <div *ngIf="index!=-1" class="theatre-list">
-    <div class="theatres" *ngFor="let item of theatre; index as i">
-        <div class="theatre-name">{{item}}</div>
-        <div class="second-row">
-            <p class="ticket"> <i class="bi bi-phone"></i> M-Ticket</p>
-            <p class="food"> <fa-icon [icon]="burger"></fa-icon>
-                <fa-icon [icon]="beverage"></fa-icon> Food and Beverage </p>
-                <div class="alignTime">
-                    <div (click)="navigateToBooking(time, timings[i],item)" *ngFor="let time of timings[i]" class="time">
-                        {{time}}
+    <ng-container *ngIf="!isTimeFiltered && !isPriceFiltered else filtered">
+        <div class="theatres" *ngFor="let item of theatre; index as i">
+            <div class="theatre-name">{{item}}</div>
+            <div class="second-row">
+                <p class="ticket"> <i class="bi bi-phone"></i> M-Ticket</p>
+                <p class="food"> <fa-icon [icon]="burger"></fa-icon>
+                    <fa-icon [icon]="beverage"></fa-icon> Food and Beverage </p>
+                    <div class="alignTime">
+                        <div (click)="navigateToBooking(time, timings[i],item)" *ngFor="let time of timings[i]" class="time">
+                            {{time}}
+                        </div>
                     </div>
-                </div>
+            </div>
         </div>
-    </div>
+    </ng-container>
+    <ng-template #filtered>
+        <ng-container *ngIf="originalMovieList.length else msg">
+            <div class="theatres" *ngFor="let item of originalMovieList; index as i">
+                <div class="theatre-name">{{item}}</div>
+                <div class="second-row">
+                    <p class="ticket"> <i class="bi bi-phone"></i> M-Ticket</p>
+                    <p class="food"> <fa-icon [icon]="burger"></fa-icon>
+                        <fa-icon [icon]="beverage"></fa-icon> Food and Beverage </p>
+                        <div class="alignTime">
+                            <div (click)="navigateToBooking(time, timings[i],item)" *ngFor="let time of originalTimingList[i]" class="time">
+                                {{time}}
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #msg>
+            <p class="shows no-shows">Sorry :(  no matching shows found</p>
+        </ng-template>
+    </ng-template>
 </div>
 
 
