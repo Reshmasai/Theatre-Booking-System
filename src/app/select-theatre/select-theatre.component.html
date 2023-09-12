@@ -20,9 +20,9 @@
         </div>
     </div>
 
-    <div [ngClass]="isTimeFiltered?'time-filter filter-applied':'time-filter filter-not-applied'" (click)="openTiming()" (mouseleave)="closeLanguage()">Filter show timing <span class="down-arrow"><i class="bi bi-chevron-down"></i></span></div>
-    <div [ngClass]="isPriceFiltered?'price-filter filter-applied':'price-filter filter-not-applied'" (click)="openPricing()" (mouseleave)="closeLanguage()">Filter price range <span class="down-arrow-1"><i class="bi bi-chevron-down"></i></span></div>
-    <div [ngClass]="isLangFiltered?'lang-filter filter-applied':'lang-filter filter-not-applied'" (click)="openLanguage()" (mouseleave)="closeLanguage()">{{language}} - {{format}} <span class="down-arrow-2"><i class="bi bi-chevron-down"></i></span></div>
+    <div [ngClass]="isTimeFiltered?'time-filter filter-applied':'time-filter filter-not-applied'" (click)="openTiming()" (mouseleave)="close()">Filter show timing <span class="down-arrow"><i class="bi bi-chevron-down"></i></span></div>
+    <div [ngClass]="isPriceFiltered?'price-filter filter-applied':'price-filter filter-not-applied'" (click)="openPricing()" (mouseleave)="close()">Filter price range <span class="down-arrow-1"><i class="bi bi-chevron-down"></i></span></div>
+    <div [ngClass]="isLangFiltered?'lang-filter filter-applied':'lang-filter filter-not-applied'" (click)="openLanguage()" (mouseleave)="close()">{{language}} - {{format}} <span class="down-arrow-2"><i class="bi bi-chevron-down"></i></span></div>
        
 </div>
 

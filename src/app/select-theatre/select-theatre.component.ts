@@ -127,7 +127,9 @@ navigateToBooking(time:any,timeList:any,theatreName:any){
       time:`${time}`,
       timeList:`${timeList}`,
       theatre:`${theatreName}`,
-      index:`${mveIdx}`
+      index:`${mveIdx}`,
+      language:`${this.language}`,
+      format:`${this.format}`
 
     }
   }
@@ -145,7 +147,7 @@ openLanguage(){
   document.querySelector('.language')?.classList.toggle('display');
   document.querySelector('.down-arrow-2')?.classList.toggle('rotate-arrow');
 }
-closeLanguage(){
+close(){
   if(document.querySelector('.language')?.classList.contains('display')) {
     document.querySelector('.language')?.classList.toggle('display');
     document.querySelector('.down-arrow-2')?.classList.toggle('rotate-arrow');

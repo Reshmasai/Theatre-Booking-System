@@ -15,6 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchComponent } from './search/search.component';
 import { MovieSearchPipe } from './movie-search.pipe';
 import { FormsModule } from '@angular/forms';
+import { TicketComponent } from './ticket/ticket.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     MovieDetailsComponent,
     SelectTheatreComponent,
     SearchComponent,
-    MovieSearchPipe
+    MovieSearchPipe,
+    TicketComponent
   ],
   imports: [
     BrowserModule,

@@ -193,25 +193,25 @@ a:hover {
     float:right;
     width:207px;
     left:858px;
-    top:220px;
+    top:auto;
     position:absolute;
-   
 }
 .timings{
     padding:10px 85px 10px 25px;
     float:right;
     left:1067px;
-    top:220px;
+    top:auto;
     position:absolute;
 }
 .language {
+    margin-top: 0;
     float:right;
     left:675px;
-    top:220px;
+    top:auto;
     position:absolute;
 }
 .language-section {
-    padding:5px 48px 5px 48px;
+    padding:5px 40px 5px 36px;
     border-bottom:1px solid rgb(224, 224, 224);
 }
 .language-section:hover {

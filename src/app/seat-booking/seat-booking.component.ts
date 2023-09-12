@@ -15,8 +15,7 @@ export class SeatBookingComponent implements AfterViewInit, OnInit, OnDestroy{
   local1:any;
   local2: any;
   isBook:boolean = false;
-  cost:number=100;
-  count:number=0;
+  bookCount:number=0;
   amount:number=0;
   disabled:any[]=[];
   indexArray:any[]=[];
@@ -37,6 +36,10 @@ export class SeatBookingComponent implements AfterViewInit, OnInit, OnDestroy{
   pricePremium:any;
   priceExecutive:any;
   priceNormal:any;
+  language:any;
+  format:any;
+  seatNum:any;
+  seatAlpha:any;
   sumVip = 0;
   sumPremium = 0;
   sumExecutive = 0;
@@ -63,6 +66,8 @@ export class SeatBookingComponent implements AfterViewInit, OnInit, OnDestroy{
       this.time = x['time'];
       this.timeList = x['timeList'].split(',');
       this.mveIndex = x['index'];
+      this.language = x['language'];
+      this.format = x['format'];
       
     })
     movieData.forEach(x=>{if(x.title==this.title){
@@ -95,12 +100,14 @@ export class SeatBookingComponent implements AfterViewInit, OnInit, OnDestroy{
     }
   }
 
-fn(event:any,str:any){
+fn(event:any,str:any,id:any){
+  console.log('hi',id)
   event.target.classList.toggle('selected');
   if(event.target.classList.contains('selected')){
     console.log("i'm selected")
     if(str=="VIP"){
       this.sumVip = this.sumVip + parseInt(this.priceVip);
+      this.seatAlpha = "J"
     }
     else if (str=="premium"){
       this.sumPremium =this.sumPremium + parseInt(this.pricePremium);
@@ -111,6 +118,7 @@ fn(event:any,str:any){
     else if (str=="normal"){
       this.sumNormal = this.sumNormal + parseInt(this.priceNormal);
     }
+    this.bookCount =this.bookCount+1
     console.log(this.sumExecutive,this.sumNormal,this.sumPremium,this.sumVip)
   }
   else {
@@ -127,10 +135,10 @@ fn(event:any,str:any){
     else if (str=="normal"){
       this.sumNormal = this.sumNormal - parseInt(this.priceNormal);
     }
+    this.bookCount=this.bookCount-1
     console.log(this.sumExecutive,this.sumNormal,this.sumPremium,this.sumVip)
   }
   this.updateCount();
-  console.log(event.target)
 }
 getFromLocal(){
   const seats = document.querySelectorAll('.seat');
@@ -153,6 +161,9 @@ getFromLocal(){
 updateCount(){
   const selectedSeats =document.querySelectorAll('.seat.selected');
   const disabledSeats = document.querySelectorAll('.seat.disabled');
+  selectedSeats.forEach(x=>{
+    console.log(x)
+  })
   this.bookSeatsVisibility(selectedSeats);
   // selectedSeats.forEach(x=>{
   //   this.indexArray.push(x.id)
@@ -162,9 +173,6 @@ updateCount(){
   })
   //localStorage.setItem('selectedSeats', JSON.stringify(this.indexArray));
   localStorage.setItem('disabledSeats',JSON.stringify(this.disabledIndex));
-  const seatCount= selectedSeats.length;
-  this.count = seatCount;
-  this.amount = seatCount*this.cost;
   this.indexArray=[]
 }
 bookSeats(){
@@ -174,6 +182,23 @@ bookSeats(){
     x.classList.add('disabled')
     this.updateCount();
   })
+  this.router.navigate(
+    ['/ticket'], 
+    { queryParams: {
+      title:`${this.title}`,
+      certificate:`${this.certificate}`,
+      theatre:`${this.theatre}`,
+      day:`${this.day}`,
+      date:`${this.date}`,
+      month:`${this.month}`,
+      time:`${this.time}`,
+      language:`${this.language}`,
+      format:`${this.format}`,
+      count:`${this.bookCount}`
+
+    }
+  }
+  )
 }
 bookSeatsVisibility(reqSeats:any){
   if(reqSeats.length){

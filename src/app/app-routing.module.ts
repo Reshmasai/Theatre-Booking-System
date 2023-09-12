@@ -8,6 +8,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieDisplayComponent } from './movie-display/movie-display.component';
 import { SelectTheatreComponent } from './select-theatre/select-theatre.component';
 import { SearchComponent } from './search/search.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 const routes: Routes = [
   {path:'navbar',component:NavbarComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'details/:name', component:MovieDetailsComponent},
   {path:'book',component:SeatBookingComponent},
   {path:'theatre/:name/:language/:format',component:SelectTheatreComponent},
-  {path:'search' , component:SearchComponent}
+  {path:'search' , component:SearchComponent},
+  {path:'ticket', component:TicketComponent}
 ];
 
 @NgModule({

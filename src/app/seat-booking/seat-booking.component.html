@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="right-item">
-        <p class="ticket">{{count}} Tickets</p><i class="bi bi-pencil pencil-icon"></i>
+        <p class="ticket">{{bookCount}} Tickets</p><i class="bi bi-pencil pencil-icon"></i>
     </div>
     <span (click)="routeBack()" class="cancel"><i class="bi bi-x"></i></span>
 </nav>
@@ -33,23 +33,23 @@
         <div class="colm">&nbsp;</div>
         <div class="colm">&nbsp;</div>
         <div class="colm">&nbsp;</div>
-        <div class="seat" id="301" (click)="fn($event, 'VIP')">10</div>
-        <div class="seat" id="302" (click)="fn($event, 'VIP')">9</div>
+        <div class="seat" id="301" (click)="fn($event, 'VIP', 0)">10</div>
+        <div class="seat" id="302" (click)="fn($event, 'VIP', 0)">9</div>
         <div class="colm">&nbsp;</div>
-        <div class="seat" id="303" (click)="fn($event, 'VIP')">8</div>
-        <div class="seat" id="304" (click)="fn($event, 'VIP')">7</div>
+        <div class="seat" id="303" (click)="fn($event, 'VIP', 0)">8</div>
+        <div class="seat" id="304" (click)="fn($event, 'VIP', 0)">7</div>
         <div class="colm">&nbsp;</div>
-        <div class="seat" id="305" (click)="fn($event, 'VIP')">6</div>
-        <div class="seat" id="306" (click)="fn($event, 'VIP')">5</div>
+        <div class="seat" id="305" (click)="fn($event, 'VIP', 0)">6</div>
+        <div class="seat" id="306" (click)="fn($event, 'VIP', 0)">5</div>
         <div class="colm">&nbsp;</div>
-        <div class="seat" id="307" (click)="fn($event, 'VIP')">4</div>
-        <div class="seat" id="308" (click)="fn($event, 'VIP')">3</div>
-        <div class="colm">&nbsp;</div>
-        <div class="colm">&nbsp;</div>
+        <div class="seat" id="307" (click)="fn($event, 'VIP', 0)">4</div>
+        <div class="seat" id="308" (click)="fn($event, 'VIP', 0)">3</div>
         <div class="colm">&nbsp;</div>
         <div class="colm">&nbsp;</div>
-        <div class="seat" id="309" (click)="fn($event, 'VIP')">2</div>
-        <div class="seat" id="310" (click)="fn($event, 'VIP')">1</div>
+        <div class="colm">&nbsp;</div>
+        <div class="colm">&nbsp;</div>
+        <div class="seat" id="309" (click)="fn($event, 'VIP', 0)">2</div>
+        <div class="seat" id="310" (click)="fn($event, 'VIP', 0)">1</div>
     </div>
     
     
@@ -69,7 +69,7 @@
         <div class="colm">&nbsp;</div>
         <div class="colm">&nbsp;</div>
         <div *ngFor="let item of 'x'.repeat(16).split(''); index as j;"
-         class="seat sec-sec" id="{{i}}{{j}}" (click)="fn($event, 'premium')">{{16-j}}</div>
+         class="seat sec-sec" id="{{i}}{{j}}" (click)="fn($event, 'premium',i)">{{16-j}}</div>
        
     </div>
 
@@ -88,7 +88,7 @@
         <div class="colm">&nbsp;</div>
         <div class="colm">&nbsp;</div>
         <div *ngFor="let item of 'x'.repeat(12).split(''); index as j;" 
-        class="seat" id="1{{i}}{{j}}" (click)="fn($event, 'executive')">{{12-j}}</div>
+        class="seat" id="1{{i}}{{j}}" (click)="fn($event, 'executive', i)">{{12-j}}</div>
     </div>
 
 
@@ -106,7 +106,7 @@
         <div class="colm">&nbsp;</div>
         <div class="colm">&nbsp;</div>
         <div *ngFor="let item of 'x'.repeat(12).split(''); index as j;" 
-        class="seat" id="2{{i}}{{j}}" (click)="fn($event, 'normal')">{{12-j}}</div> 
+        class="seat" id="2{{i}}{{j}}" (click)="fn($event, 'normal', i)">{{12-j}}</div> 
     </div><br>
 
     <div class="screen"></div><br>

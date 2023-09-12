@@ -1,0 +1,38 @@
+.dish {
+    margin: 100px 50% 30px 30%;
+    padding:10px 0px 10px 10px;
+    box-shadow: 0px 0px 5px 5px rgb(237, 236, 236); 
+    width:40%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.holder-1 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.holder-2 {
+    display: flex;
+    gap:200px;
+}
+.movie-name {
+    font-size: 20px;
+    font-weight:600;
+    margin-bottom:10px;
+    line-height: 20px;
+}
+.lang-format,.date,.theatre-name, .verti {
+    font-size:14px;
+    opacity:0.8;
+}
+.picture {
+    border-radius: 5px;
+}
+.verti {
+    rotate:-90deg;
+    height:20px;
+    margin-top: 40px;
+}
+.second-row {
+    width:340px;
+}
