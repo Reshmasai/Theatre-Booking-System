@@ -10,12 +10,14 @@ export let browserRefresh = false;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isBook:any;
-  isSearch:any;
+  isBook: any;
+  isSearch: any;
+  isTicket: any;
   subscription:Subscription | undefined;
   constructor(private dataService:DataService, private router:Router ){
     this.dataService.isBook.subscribe(x=>this.isBook = x);
     this.dataService.isSearch.subscribe(x=>this.isSearch = x);
+    this.dataService.isTicket.subscribe(x=>this.isSearch = x);
 
     this.subscription = router.events.subscribe(event=>{
       if(event instanceof NavigationStart){

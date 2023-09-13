@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { movieData } from 'src/movieRecord/movieData';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
   styleUrls: ['./ticket.component.css']
 })
-export class TicketComponent implements OnInit {
+export class TicketComponent implements OnInit, OnDestroy {
+[x: string]: any;
   title:any;
   certificate:any;
   theatre:any;
@@ -19,8 +21,18 @@ export class TicketComponent implements OnInit {
   format:any;
   name:any;
   count:any;
-  constructor(private activatedRoute:ActivatedRoute){}
+  amount:any;
+  random:any;
+  seatNumList: any[]=[];
+  constructor(private activatedRoute:ActivatedRoute, private dataService:DataService){}
+  ngOnDestroy(): void {
+    this.dataService.isBook.next(false);
+  }
   ngOnInit(): void {
+    const alpha = "AbcD"
+    this.random =Math.floor(Math.random()*1000)+alpha.charAt(Math.floor(Math.random()*alpha.length))+Math.floor(Math.random()*1000)+alpha.charAt(Math.floor(Math.random()*alpha.length));
+    this.seatNumList = this.dataService.seatNumList;
+    this.dataService.isBook.next(true);
     this.activatedRoute.queryParams.subscribe(x=>{
       this.title = x['title'];
       this.certificate =x['certificate'];
@@ -32,6 +44,7 @@ export class TicketComponent implements OnInit {
       this.language = x['language'];
       this.format = x['format'];  
       this.count = x['count'];
+      this.amount =x['amount'];
 
     })
     movieData.forEach(x=>{if(x.title==this.title){

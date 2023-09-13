@@ -1,3 +1,4 @@
+<h4 class="msg">Booking successful!</h4>
 <div class="dish">
     <div class="holder-1">
         <img class="picture" alt="" width="70" height="100">
@@ -8,9 +9,20 @@
             <div class="theatre-name">{{theatre}}</div>
         </div>
         <div class="verti">M-Ticket</div>
-    </div><br>
+    </div>
+    <div class="median"></div>
     <div class="holder-2">
         <img class="img" src="assets/Images/qr-code.png" width="70" height="70" >
-        <div>{{count}} Ticket(s)</div>
+        <div class="holder-2-items">
+            <div class="item-1">{{count}} Ticket(s)</div>
+            <div class="item">AUDI 3</div>
+            <div class="item-1">Budget - {{seatNumList}}</div>
+            <div class="item-2">BOOKING ID: {{random}}</div>
+        </div>
+    </div>
+    <div class="bottom-line">Cancellation available: cut-off time of 20 minutes before showtime</div>
+    <div class="holder-3">
+        <div style="font-size:14px">Total Amount</div>
+        <div style="font-size:14px; font-weight:600">Rs.{{amount}}</div>
     </div>
 </div>

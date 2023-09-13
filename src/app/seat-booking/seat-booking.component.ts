@@ -39,7 +39,7 @@ export class SeatBookingComponent implements AfterViewInit, OnInit, OnDestroy{
   language:any;
   format:any;
   seatNum:any;
-  seatAlpha:any;
+  seatAlpha:any[]=[];
   sumVip = 0;
   sumPremium = 0;
   sumExecutive = 0;
@@ -101,21 +101,30 @@ export class SeatBookingComponent implements AfterViewInit, OnInit, OnDestroy{
   }
 
 fn(event:any,str:any,id:any){
-  console.log('hi',id)
   event.target.classList.toggle('selected');
+  this.seatNum = event.target.innerHTML
   if(event.target.classList.contains('selected')){
     console.log("i'm selected")
     if(str=="VIP"){
       this.sumVip = this.sumVip + parseInt(this.priceVip);
-      this.seatAlpha = "J"
+      this.seatAlpha.push("J" + this.seatNum)
     }
     else if (str=="premium"){
+      if(parseInt(id)==0){this.seatAlpha.push("I" + this.seatNum)}
+      else if(parseInt(id)==1){this.seatAlpha.push("H" + this.seatNum)}
+      else if(parseInt(id)==2){this.seatAlpha.push("G" + this.seatNum)}
+      else if(parseInt(id)==3){this.seatAlpha.push("F" + this.seatNum)}
+      else {this.seatAlpha.push("E" + this.seatNum)}
       this.sumPremium =this.sumPremium + parseInt(this.pricePremium);
     }
     else if (str=="executive"){
+      if(parseInt(id)==0) {this.seatAlpha.push("D" + this.seatNum)}
+      else {this.seatAlpha.push("C" + this.seatNum)}
       this.sumExecutive = this.sumExecutive + parseInt(this.priceExecutive);
     }
     else if (str=="normal"){
+      if(parseInt(id)==0) {this.seatAlpha.push("B" + this.seatNum)}
+      else {this.seatAlpha.push("A" + this.seatNum)}
       this.sumNormal = this.sumNormal + parseInt(this.priceNormal);
     }
     this.bookCount =this.bookCount+1
@@ -125,19 +134,30 @@ fn(event:any,str:any,id:any){
     console.log("i'm unselected")
     if(str=="VIP"){
       this.sumVip = this.sumVip - parseInt(this.priceVip);
+      this.seatAlpha.splice(this.seatAlpha.indexOf("J" + this.seatNum),1)
     }
     else if (str=="premium"){
       this.sumPremium =this.sumPremium - parseInt(this.pricePremium);
+      if(parseInt(id)==0){this.seatAlpha.splice(this.seatAlpha.indexOf("I" + this.seatNum),1)}
+      else if(parseInt(id)==1){this.seatAlpha.splice(this.seatAlpha.indexOf("H" + this.seatNum),1)}
+      else if(parseInt(id)==2){this.seatAlpha.splice(this.seatAlpha.indexOf("G" + this.seatNum),1)}
+      else if(parseInt(id)==3){this.seatAlpha.splice(this.seatAlpha.indexOf("F" + this.seatNum),1)}
+      else {this.seatAlpha.splice(this.seatAlpha.indexOf("E" + this.seatNum),1)}
     }
     else if (str=="executive"){
       this.sumExecutive = this.sumExecutive - parseInt(this.priceExecutive);
+      if(parseInt(id)==0) {this.seatAlpha.splice(this.seatAlpha.indexOf("D" + this.seatNum),1)}
+      else {this.seatAlpha.splice(this.seatAlpha.indexOf("C" + this.seatNum),1)}
     }
     else if (str=="normal"){
       this.sumNormal = this.sumNormal - parseInt(this.priceNormal);
+      if(parseInt(id)==0) {this.seatAlpha.splice(this.seatAlpha.indexOf("B" + this.seatNum),1)}
+      else {this.seatAlpha.splice(this.seatAlpha.indexOf("A" + this.seatNum),1)}
     }
     this.bookCount=this.bookCount-1
-    console.log(this.sumExecutive,this.sumNormal,this.sumPremium,this.sumVip)
   }
+  console.log(this.seatAlpha)
+  this.dataService.seatNumList = this.seatAlpha;
   this.updateCount();
 }
 getFromLocal(){
@@ -194,7 +214,8 @@ bookSeats(){
       time:`${this.time}`,
       language:`${this.language}`,
       format:`${this.format}`,
-      count:`${this.bookCount}`
+      count:`${this.bookCount}`,
+      amount:`${this.sumVip+this.sumPremium+this.sumExecutive+this.sumNormal}`
 
     }
   }

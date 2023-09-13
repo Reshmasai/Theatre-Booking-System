@@ -6,9 +6,11 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class DataService {
  location = new Subject();
+ seatNumList : any[]=[];
  prevLoc:any;
  isBook=new BehaviorSubject(false);
  isSearch=new BehaviorSubject(false);
+ isTicket=new BehaviorSubject(false);
  isLoggedIn=new BehaviorSubject(false);
  name = new BehaviorSubject("");
   constructor() { }
