@@ -40,7 +40,6 @@
 }
 .calender {
     display: flex;
-    width:300px;
     overflow-x:hidden;
     scroll-behavior: smooth;
     margin-left:40px;
@@ -75,14 +74,13 @@
     pointer-events: none;
 }
 .date-holder:hover {
-    color:rgb(255, 60, 106);
+    color:rgb(189, 166, 172);
 }
 
 .btn-container{
     position:sticky;
     z-index:1;
     top:0;
-
 }
 .right-btn, .left-btn {
     margin-top:15px;
@@ -100,6 +98,11 @@
     margin: 12px 15px 0 15px;
     padding-top: 30px;
     box-shadow: 0px 0px 90px 0px rgb(227, 226, 226);  
+    width: 79em;  
+    height: 305px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    padding: 10px;
 }
 .theatre-name {
     margin-top: 20px;
@@ -197,16 +200,17 @@ a:hover {
     position:absolute;
 }
 .timings{
-    padding:10px 85px 10px 25px;
+    padding:10px 85px 10px 32px;
     float:right;
-    left:1067px;
+    left:1064px;
     top:auto;
     position:absolute;
 }
 .language {
+    padding:10px 10px 10px 10px;
     margin-top: 0;
     float:right;
-    left:675px;
+    left:673px;
     top:auto;
     position:absolute;
 }

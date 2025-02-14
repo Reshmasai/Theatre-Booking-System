@@ -16,13 +16,12 @@ export class NavbarComponent implements OnInit{
     })
     this.dataService.name.subscribe((x:any)=>{
       this.name =x;
-      console.log(this.name)
     })
   }
   
-   sendLoc(loc:string){
-     this.dataService.location.next(loc);
-     this.dataService.prevLoc = loc;
+   sendLoc(event:any){
+     this.dataService.location.next(event.target.value);
+     this.dataService.prevLoc = event.target.value;
    }
   }
  

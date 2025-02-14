@@ -67,7 +67,7 @@
     opacity:0.8;
     text-align: center;
     padding-left: 0;
-    background-color: rgb(243, 243, 243);
+    background-color: rgba(243, 243, 243, 0.842);
 }
 .holder-3 {
     display: flex;
